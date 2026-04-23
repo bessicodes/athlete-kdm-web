@@ -162,10 +162,10 @@ nav a:hover::after {
   position: fixed;
   top: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
+  width: 14px;
+  height: 14px;
   border-radius: 999px;
-  border: 1.6px solid #ffffff;
+  border: 1.2px solid rgba(255, 255, 255, 0.74);
   pointer-events: none;
   z-index: 60;
   will-change: transform;

@@ -44,14 +44,14 @@ export default function Home() {
     };
 
     const animateCursor = () => {
-      currentX += (targetX - currentX) * 0.16;
-      currentY += (targetY - currentY) * 0.16;
+      currentX += (targetX - currentX) * 0.28;
+      currentY += (targetY - currentY) * 0.28;
       const lagX = ((currentX / window.innerWidth) - 0.5) * 14;
       const lagY = ((currentY / window.innerHeight) - 0.5) * 10;
       document.documentElement.style.setProperty("--lag-x", `${lagX.toFixed(2)}px`);
       document.documentElement.style.setProperty("--lag-y", `${lagY.toFixed(2)}px`);
       if (cursor) {
-        cursor.style.transform = `translate3d(${currentX - 10}px, ${currentY - 10}px, 0)`;
+        cursor.style.transform = `translate3d(${currentX - 7}px, ${currentY - 7}px, 0)`;
       }
       frame = window.requestAnimationFrame(animateCursor);
     };
