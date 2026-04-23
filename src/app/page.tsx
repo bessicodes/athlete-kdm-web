@@ -56,25 +56,33 @@ export default function Home() {
     window.addEventListener("scroll", onScroll, { passive: true });
     frame = window.requestAnimationFrame(animateCursor);
 
-    const easeInOutCubic = (t: number) =>
-      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    const easeInOutQuint = (t: number) =>
+      t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2;
 
-    const smoothScrollTo = (targetY: number, duration = 900) => {
+    let scrollFrame = 0;
+
+    const smoothScrollTo = (targetY: number) => {
       const startY = window.scrollY;
       const diff = targetY - startY;
+      const distance = Math.abs(diff);
+      const duration = Math.min(1500, Math.max(760, distance * 0.9));
       const startTime = performance.now();
+
+      if (scrollFrame) {
+        window.cancelAnimationFrame(scrollFrame);
+      }
 
       const step = (now: number) => {
         const elapsed = now - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        const eased = easeInOutCubic(progress);
+        const eased = easeInOutQuint(progress);
         window.scrollTo(0, startY + diff * eased);
         if (progress < 1) {
-          window.requestAnimationFrame(step);
+          scrollFrame = window.requestAnimationFrame(step);
         }
       };
 
-      window.requestAnimationFrame(step);
+      scrollFrame = window.requestAnimationFrame(step);
     };
 
     const handleAnchorClick = (event: Event) => {
@@ -100,6 +108,9 @@ export default function Home() {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("scroll", onScroll);
       window.cancelAnimationFrame(frame);
+      if (scrollFrame) {
+        window.cancelAnimationFrame(scrollFrame);
+      }
       document.documentElement.style.setProperty("--lag-x", "0px");
       document.documentElement.style.setProperty("--lag-y", "0px");
       anchors.forEach((anchor) =>
