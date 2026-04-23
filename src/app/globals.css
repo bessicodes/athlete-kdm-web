@@ -219,6 +219,7 @@ h1 {
 }
 
 .about-video-wrap {
+  position: relative;
   margin: 1.4rem 0 1.1rem;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 1rem;
@@ -230,7 +231,28 @@ h1 {
   display: block;
   width: 100%;
   max-height: min(62vh, 680px);
-  object-fit: cover;
+  object-fit: contain;
+}
+
+.video-toggle {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(0, 0, 0, 0.64);
+  color: #fff;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+
+.video-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);
 }
 
 h2 {

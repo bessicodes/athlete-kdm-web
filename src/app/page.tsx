@@ -1,8 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
+  const aboutVideoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+
   useEffect(() => {
     const elements = document.querySelectorAll("[data-reveal]");
     const observer = new IntersectionObserver(
@@ -92,6 +95,19 @@ export default function Home() {
     };
   }, []);
 
+  const toggleVideoPlayback = () => {
+    const video = aboutVideoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      void video.play();
+      setIsPlaying(true);
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
+
   return (
     <>
       <header className="site-header">
@@ -130,14 +146,27 @@ export default function Home() {
             <h2>ABOUT</h2>
             <div className="about-video-wrap">
               <video
+                ref={aboutVideoRef}
                 className="about-video"
-                src="/videos/edit1.mp4"
-                controls
+                autoPlay
                 muted
                 loop
                 playsInline
-                preload="metadata"
-              />
+                preload="auto"
+                onPause={() => setIsPlaying(false)}
+                onPlay={() => setIsPlaying(true)}
+              >
+                <source src="/videos/edit1.mp4" type="video/mp4" />
+                Your browser does not support this video format.
+              </video>
+              <button
+                type="button"
+                className="video-toggle"
+                onClick={toggleVideoPlayback}
+                aria-label={isPlaying ? "Pause video" : "Play video"}
+              >
+                {isPlaying ? "Pause" : "Play"}
+              </button>
             </div>
             <p className="section-mark">ATHLETE KINGDOM</p>
           </div>
