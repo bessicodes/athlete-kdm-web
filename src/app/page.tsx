@@ -5,8 +5,9 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const aboutVideoRef = useRef<HTMLVideoElement>(null);
+  const soundPlayedOnceRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -141,6 +142,61 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    const video = aboutVideoRef.current;
+    if (!video) return;
+
+    video.volume = 0.08;
+    video.muted = false;
+
+    const startWithSound = async () => {
+      try {
+        video.currentTime = 0;
+        await video.play();
+        setIsPlaying(true);
+        setIsMuted(false);
+      } catch {
+        video.muted = true;
+        setIsMuted(true);
+        void video.play();
+      }
+    };
+
+    const muteAfterFirstAudioPass = () => {
+      if (soundPlayedOnceRef.current) return;
+      if (!Number.isFinite(video.duration) || video.duration <= 0) return;
+      if (video.muted) return;
+
+      if (video.currentTime >= video.duration - 0.15) {
+        soundPlayedOnceRef.current = true;
+        video.muted = true;
+        setIsMuted(true);
+      }
+    };
+
+    void startWithSound();
+    video.addEventListener("timeupdate", muteAfterFirstAudioPass);
+
+    const enableSoundOnFirstInteraction = () => {
+      if (soundPlayedOnceRef.current) return;
+      video.currentTime = 0;
+      video.muted = false;
+      video.volume = 0.08;
+      setIsMuted(false);
+      void video.play();
+    };
+
+    window.addEventListener("pointerdown", enableSoundOnFirstInteraction, {
+      once: true,
+      passive: true,
+    });
+
+    return () => {
+      video.removeEventListener("timeupdate", muteAfterFirstAudioPass);
+      window.removeEventListener("pointerdown", enableSoundOnFirstInteraction);
+    };
+  }, []);
+
   const toggleVideoPlayback = () => {
     const video = aboutVideoRef.current;
     if (!video) return;
@@ -152,6 +208,18 @@ export default function Home() {
       video.pause();
       setIsPlaying(false);
     }
+  };
+
+  const toggleVideoSound = () => {
+    const video = aboutVideoRef.current;
+    if (!video) return;
+
+    const nextMuted = !isMuted;
+    video.muted = nextMuted;
+    if (!nextMuted) {
+      video.volume = 0.08;
+    }
+    setIsMuted(nextMuted);
   };
 
   const copyEmail = async () => {
@@ -260,7 +328,7 @@ export default function Home() {
                   <button
                     type="button"
                     className="video-toggle sound"
-                    onClick={() => setIsMuted((prev) => !prev)}
+                    onClick={toggleVideoSound}
                     aria-label={isMuted ? "Unmute video" : "Mute video"}
                   >
                     {isMuted ? "Sound On" : "Sound Off"}
