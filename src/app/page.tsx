@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 export default function Home() {
   const aboutVideoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
     const elements = document.querySelectorAll("[data-reveal]");
@@ -149,7 +150,7 @@ export default function Home() {
                 ref={aboutVideoRef}
                 className="about-video"
                 autoPlay
-                muted
+                muted={isMuted}
                 loop
                 playsInline
                 preload="auto"
@@ -166,6 +167,14 @@ export default function Home() {
                 aria-label={isPlaying ? "Pause video" : "Play video"}
               >
                 {isPlaying ? "Pause" : "Play"}
+              </button>
+              <button
+                type="button"
+                className="video-toggle sound"
+                onClick={() => setIsMuted((prev) => !prev)}
+                aria-label={isMuted ? "Unmute video" : "Mute video"}
+              >
+                {isMuted ? "Sound On" : "Sound Off"}
               </button>
             </div>
             <p className="section-mark">ATHLETE KINGDOM</p>

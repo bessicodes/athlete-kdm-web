@@ -251,6 +251,10 @@ h1 {
   backdrop-filter: blur(4px);
 }
 
+.video-toggle.sound {
+  right: 7.2rem;
+}
+
 .video-toggle:hover {
   background: rgba(255, 255, 255, 0.12);
 }
