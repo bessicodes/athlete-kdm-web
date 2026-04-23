@@ -156,7 +156,7 @@ export default function Home() {
                 onPause={() => setIsPlaying(false)}
                 onPlay={() => setIsPlaying(true)}
               >
-                <source src="/videos/edit1.mp4" type="video/mp4" />
+                <source src="./videos/edit1.mp4" type="video/mp4" />
                 Your browser does not support this video format.
               </video>
               <button
