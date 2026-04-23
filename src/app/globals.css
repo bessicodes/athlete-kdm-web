@@ -101,29 +101,6 @@ nav a:hover::after {
   scroll-snap-align: start;
 }
 
-.cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.75);
-  pointer-events: none;
-  z-index: 60;
-  display: grid;
-  place-items: center;
-  will-change: transform;
-}
-
-.cursor-ring::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #fff;
-}
-
 .hero-content {
   position: relative;
   z-index: 2;
@@ -371,7 +348,4 @@ h2 {
     letter-spacing: 0.22em;
   }
 
-  .cursor-ring {
-    display: none;
-  }
 }

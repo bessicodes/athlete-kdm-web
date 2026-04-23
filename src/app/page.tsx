@@ -23,30 +23,6 @@ export default function Home() {
 
     elements.forEach((element) => observer.observe(element));
 
-    const cursor = document.querySelector<HTMLElement>(".cursor-ring");
-    let targetX = window.innerWidth / 2;
-    let targetY = window.innerHeight / 2;
-    let currentX = targetX;
-    let currentY = targetY;
-    let frame = 0;
-
-    const onMouseMove = (event: MouseEvent) => {
-      targetX = event.clientX;
-      targetY = event.clientY;
-    };
-
-    const animateCursor = () => {
-      currentX += (targetX - currentX) * 0.16;
-      currentY += (targetY - currentY) * 0.16;
-      if (cursor) {
-        cursor.style.transform = `translate3d(${currentX - 22}px, ${currentY - 22}px, 0)`;
-      }
-      frame = window.requestAnimationFrame(animateCursor);
-    };
-
-    window.addEventListener("mousemove", onMouseMove);
-    frame = window.requestAnimationFrame(animateCursor);
-
     const easeInOutCubic = (t: number) =>
       t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
@@ -88,8 +64,6 @@ export default function Home() {
 
     return () => {
       observer.disconnect();
-      window.removeEventListener("mousemove", onMouseMove);
-      window.cancelAnimationFrame(frame);
       anchors.forEach((anchor) =>
         anchor.removeEventListener("click", handleAnchorClick)
       );
@@ -123,8 +97,6 @@ export default function Home() {
       </header>
 
       <main className="page-shell">
-        <div className="cursor-ring" aria-hidden />
-
         <section id="home" className="hero">
           <div className="hero-content reveal is-visible">
             <p className="hero-kicker">
