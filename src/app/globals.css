@@ -153,10 +153,10 @@ nav a:hover::after {
 
 .hero {
   position: relative;
-  min-height: max(108vh, 820px);
+  min-height: 100svh;
   display: grid;
   place-items: center;
-  padding: 9.2rem 4.6vw 6rem;
+  padding: clamp(7.4rem, 11vh, 9.2rem) 4.6vw clamp(5.2rem, 10vh, 6.8rem);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
   scroll-snap-align: start;
@@ -220,7 +220,7 @@ h1 {
 
 .scroll-indicator {
   position: absolute;
-  bottom: 2.2rem;
+  bottom: max(1.15rem, calc(env(safe-area-inset-bottom) + 0.55rem));
   left: 50%;
   transform: translateX(-50%);
   width: 30px;
@@ -682,8 +682,13 @@ h2 {
   }
 
   .hero {
-    min-height: 92vh;
-    padding-top: 9rem;
+    min-height: 100svh;
+    padding-top: clamp(7.2rem, 15vw, 8.8rem);
+    padding-bottom: clamp(4.1rem, 11vw, 5rem);
+  }
+
+  .scroll-indicator {
+    bottom: max(0.9rem, calc(env(safe-area-inset-bottom) + 0.35rem));
   }
 
   .panel-section {
