@@ -239,8 +239,8 @@ export default function Home() {
           <Image
             src="./images/kdm-logo-header.png"
             alt="Athlete Kingdom logo"
-            width={58}
-            height={58}
+            width={90}
+            height={90}
             unoptimized
             quality={100}
             priority
