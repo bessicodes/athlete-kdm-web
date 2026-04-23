@@ -148,7 +148,7 @@ export default function Home() {
       <header className="site-header">
         <a href="#home" className="brand">
           <Image
-            src="/images/kdm-logo-header.png"
+            src="./images/kdm-logo-header.png"
             alt="Athlete Kingdom logo"
             width={58}
             height={58}
