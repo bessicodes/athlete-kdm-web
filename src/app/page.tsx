@@ -57,6 +57,19 @@ export default function Home() {
     window.addEventListener("scroll", onScroll, { passive: true });
     frame = window.requestAnimationFrame(animateCursor);
 
+    const setHeaderOffset = () => {
+      const header = document.querySelector(".site-header") as HTMLElement | null;
+      const offset = (header?.offsetHeight ?? 96) + 18;
+      document.documentElement.style.setProperty("--header-offset", `${offset}px`);
+    };
+
+    setHeaderOffset();
+    window.addEventListener("resize", setHeaderOffset);
+
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+
     const easeInOutQuint = (t: number) =>
       t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2;
 
@@ -94,7 +107,14 @@ export default function Home() {
       if (!section) return;
 
       event.preventDefault();
-      const headerOffset = 110;
+      if (href === "#home") {
+        smoothScrollTo(0);
+        return;
+      }
+      const rawOffset = getComputedStyle(document.documentElement)
+        .getPropertyValue("--header-offset")
+        .trim();
+      const headerOffset = Number.parseFloat(rawOffset) || 114;
       const rectTop = section.getBoundingClientRect().top + window.scrollY;
       smoothScrollTo(Math.max(rectTop - headerOffset, 0));
     };
@@ -106,6 +126,7 @@ export default function Home() {
 
     return () => {
       observer.disconnect();
+      window.removeEventListener("resize", setHeaderOffset);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("scroll", onScroll);
       window.cancelAnimationFrame(frame);
