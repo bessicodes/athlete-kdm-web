@@ -287,58 +287,63 @@ export default function Home() {
           <div className="panel reveal" data-reveal>
             <h2>CONTACT</h2>
             <div className="contact-live">
-              <p>
-                Get in touch with Athlete Kingdom for collaborations, questions,
-                copyright inquiries, or to connect with the sports community.
-                Reach out via email at{" "}
-                <a href="mailto:athletekingdomedits@gmail.com">
-                  athletekingdomedits@gmail.com
-                </a>{" "}
-                or follow Athlete Kingdom on Instagram, TikTok, and YouTube.
-                Whether you&apos;re an athlete, creator, or sports fan, this is
-                the place to connect and become part of The Home of Sports.
-              </p>
+              <div className="contact-intro">
+                <p>
+                  Get in touch with Athlete Kingdom for collaborations, questions,
+                  copyright inquiries, or to connect with the sports community.
+                  Reach out via email at{" "}
+                  <a href="mailto:athletekingdomedits@gmail.com">
+                    athletekingdomedits@gmail.com
+                  </a>{" "}
+                  or follow Athlete Kingdom on Instagram, TikTok, and YouTube.
+                  Whether you&apos;re an athlete, creator, or sports fan, this is
+                  the place to connect and become part of The Home of Sports.
+                </p>
 
-              <div className="contact-actions">
-                <a
-                  className="contact-btn primary"
-                  href="mailto:athletekingdomedits@gmail.com"
-                >
-                  Email Athlete Kingdom
-                </a>
-                <button className="contact-btn" type="button" onClick={copyEmail}>
-                  {copied ? "Email Copied" : "Copy Email"}
-                </button>
+                <div className="contact-actions">
+                  <a
+                    className="contact-btn primary"
+                    href="mailto:athletekingdomedits@gmail.com"
+                  >
+                    Email Athlete Kingdom
+                  </a>
+                  <button className="contact-btn" type="button" onClick={copyEmail}>
+                    {copied ? "Email Copied" : "Copy Email"}
+                  </button>
+                </div>
               </div>
 
-              <div className="social-grid">
-                <a
-                  className="social-card"
-                  href="https://instagram.com/athletekingdm?igsh=MWFkY2RrajhqN2psMA==&utm_source=qr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>Instagram</span>
-                  <strong>Follow</strong>
-                </a>
-                <a
-                  className="social-card"
-                  href="https://tiktok.com/@athletekingdm?_t=8kQJrUQWZmw&_r=1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>TikTok</span>
-                  <strong>Follow</strong>
-                </a>
-                <a
-                  className="social-card"
-                  href="https://www.youtube.com/@AthleteKingdom"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>YouTube</span>
-                  <strong>Subscribe</strong>
-                </a>
+              <div className="contact-social-wrap">
+                <p className="contact-kicker">Connect with Athlete Kingdom</p>
+                <div className="social-grid">
+                  <a
+                    className="social-card"
+                    href="https://instagram.com/athletekingdm?igsh=MWFkY2RrajhqN2psMA==&utm_source=qr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span>Instagram</span>
+                    <strong>Follow</strong>
+                  </a>
+                  <a
+                    className="social-card"
+                    href="https://tiktok.com/@athletekingdm?_t=8kQJrUQWZmw&_r=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span>TikTok</span>
+                    <strong>Follow</strong>
+                  </a>
+                  <a
+                    className="social-card"
+                    href="https://www.youtube.com/@AthleteKingdom"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span>YouTube</span>
+                    <strong>Subscribe</strong>
+                  </a>
+                </div>
               </div>
             </div>
 
