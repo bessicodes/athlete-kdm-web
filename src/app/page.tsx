@@ -175,7 +175,6 @@ export default function Home() {
 
         <section id="about" className="panel-section">
           <div className="panel reveal" data-reveal>
-            <p className="mini">SECTION</p>
             <h2>ABOUT</h2>
             <div className="about-layout">
               <div className="about-content">
@@ -267,7 +266,6 @@ export default function Home() {
 
         <section id="contact" className="panel-section">
           <div className="panel reveal" data-reveal>
-            <p className="mini">SECTION</p>
             <h2>CONTACT</h2>
             <div className="contact-live">
               <p>
