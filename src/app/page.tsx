@@ -30,6 +30,7 @@ export default function Home() {
     let currentY = targetY;
     let frame = 0;
     let lastScrollY = window.scrollY;
+    const cursor = document.querySelector<HTMLElement>(".cursor-ring");
 
     const onMouseMove = (event: MouseEvent) => {
       targetX = event.clientX;
@@ -49,6 +50,9 @@ export default function Home() {
       const lagY = ((currentY / window.innerHeight) - 0.5) * 10;
       document.documentElement.style.setProperty("--lag-x", `${lagX.toFixed(2)}px`);
       document.documentElement.style.setProperty("--lag-y", `${lagY.toFixed(2)}px`);
+      if (cursor) {
+        cursor.style.transform = `translate3d(${currentX - 10}px, ${currentY - 10}px, 0)`;
+      }
       frame = window.requestAnimationFrame(animateCursor);
     };
 
@@ -145,6 +149,7 @@ export default function Home() {
       </header>
 
       <main className="page-shell">
+        <div className="cursor-ring" aria-hidden />
         <section id="home" className="hero">
           <div className="hero-content reveal is-visible">
             <p className="hero-kicker">
