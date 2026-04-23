@@ -56,6 +56,7 @@ a {
   width: 62px;
   height: 62px;
   overflow: hidden;
+  perspective: 1000px;
 }
 
 .brand img {
@@ -64,7 +65,9 @@ a {
   object-fit: contain;
   image-rendering: auto;
   transform-origin: center;
-  animation: logoSpinPulse 8.5s linear infinite;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  animation: logoSpinLeft 3.8s linear infinite;
 }
 
 nav {
@@ -653,18 +656,12 @@ h2 {
   }
 }
 
-@keyframes logoSpinPulse {
+@keyframes logoSpinLeft {
   0% {
-    transform: rotate(0deg);
-  }
-  35% {
-    transform: rotate(90deg);
-  }
-  60% {
-    transform: rotate(270deg);
+    transform: rotateY(0deg);
   }
   100% {
-    transform: rotate(360deg);
+    transform: rotateY(-360deg);
   }
 }
 
