@@ -196,17 +196,6 @@ export default function Home() {
                   </p>
                 </article>
 
-                <article className="about-block">
-                  <span className="about-badge">What You Get</span>
-                  <ul className="about-list">
-                    <li>Inspiring stories from the world of sport</li>
-                    <li>Clips that motivate and educate</li>
-                    <li>Videos to help you grow</li>
-                    <li>The best sporting moments and highlights</li>
-                    <li>Consistent creative content and more</li>
-                  </ul>
-                </article>
-
                 <details className="about-legal" open>
                   <summary>Copyright and Fair Use</summary>
                   <p>
@@ -242,7 +231,7 @@ export default function Home() {
                     onPause={() => setIsPlaying(false)}
                     onPlay={() => setIsPlaying(true)}
                   >
-                    <source src="./videos/edit1.mp4" type="video/mp4" />
+                    <source src="./videos/edit2.mp4" type="video/mp4" />
                     Your browser does not support this video format.
                   </video>
                   <button

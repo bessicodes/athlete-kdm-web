@@ -265,14 +265,15 @@ h1 {
 .about-layout {
   margin-top: 1rem;
   display: grid;
-  gap: 1.25rem;
-  grid-template-columns: 1.08fr 0.92fr;
+  gap: 1.4rem;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
   align-items: start;
 }
 
 .about-content {
   display: grid;
   gap: 1rem;
+  min-width: 0;
 }
 
 .about-block {
@@ -309,6 +310,7 @@ h1 {
 .about-media {
   display: grid;
   gap: 0.88rem;
+  min-width: 0;
 }
 
 .about-media-meta {
@@ -411,6 +413,23 @@ h1 {
   font-weight: 700;
 }
 
+@media (max-width: 1320px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .about-content,
+  .about-media {
+    width: min(100%, 860px);
+    margin-inline: auto;
+  }
+
+  .about-contact-strip {
+    border-radius: 0.9rem;
+  }
+}
+
 .about-video-wrap {
   position: relative;
   margin: 0;
@@ -424,7 +443,10 @@ h1 {
   display: block;
   width: 100%;
   max-height: min(64vh, 650px);
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.7);
+  transform-origin: center;
 }
 
 .video-toggle {
