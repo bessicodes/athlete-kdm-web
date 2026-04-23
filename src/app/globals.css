@@ -27,19 +27,11 @@ body {
   background: #020202;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  cursor: none;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  cursor: none;
-}
-
-button,
-video,
-summary {
-  cursor: none;
 }
 
 .site-header {
@@ -156,20 +148,6 @@ nav a:hover::after {
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
   scroll-snap-align: start;
-}
-
-.cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 14px;
-  height: 14px;
-  border-radius: 999px;
-  border: 1.2px solid rgba(255, 255, 255, 0.74);
-  pointer-events: none;
-  z-index: 60;
-  will-change: transform;
-  mix-blend-mode: difference;
 }
 
 .hero-content {
@@ -708,18 +686,4 @@ h2 {
     opacity: 0.45;
   }
 
-}
-
-@media (hover: none), (pointer: coarse) {
-  body,
-  a,
-  button,
-  video,
-  summary {
-    cursor: auto;
-  }
-
-  .cursor-ring {
-    display: none;
-  }
 }
