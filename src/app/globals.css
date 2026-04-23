@@ -101,25 +101,6 @@ nav a:hover::after {
   scroll-snap-align: start;
 }
 
-.hero-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  opacity: 0.75;
-}
-
-.hero-video-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background:
-    radial-gradient(circle at 50% 45%, rgba(0, 0, 0, 0.26) 0%, rgba(0, 0, 0, 0.78) 70%),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.55));
-}
-
 .cursor-ring {
   position: fixed;
   top: 0;
@@ -235,6 +216,21 @@ h1 {
   background: linear-gradient(170deg, rgba(255, 255, 255, 0.03), transparent);
   border-radius: 1.4rem;
   padding: clamp(2rem, 5vw, 4rem);
+}
+
+.about-video-wrap {
+  margin: 1.4rem 0 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #000;
+}
+
+.about-video {
+  display: block;
+  width: 100%;
+  max-height: min(62vh, 680px);
+  object-fit: cover;
 }
 
 h2 {
