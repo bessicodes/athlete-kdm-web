@@ -24,6 +24,38 @@ export default function Home() {
 
     elements.forEach((element) => observer.observe(element));
 
+    const cursor = document.querySelector<HTMLElement>(".cursor-ring");
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let currentX = targetX;
+    let currentY = targetY;
+    let frame = 0;
+    let lastScrollY = window.scrollY;
+
+    const onMouseMove = (event: MouseEvent) => {
+      targetX = event.clientX;
+      targetY = event.clientY;
+    };
+
+    const onScroll = () => {
+      const scrollDelta = window.scrollY - lastScrollY;
+      targetY += scrollDelta * 0.22;
+      lastScrollY = window.scrollY;
+    };
+
+    const animateCursor = () => {
+      currentX += (targetX - currentX) * 0.16;
+      currentY += (targetY - currentY) * 0.16;
+      if (cursor) {
+        cursor.style.transform = `translate3d(${currentX - 22}px, ${currentY - 22}px, 0)`;
+      }
+      frame = window.requestAnimationFrame(animateCursor);
+    };
+
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    frame = window.requestAnimationFrame(animateCursor);
+
     const easeInOutCubic = (t: number) =>
       t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
@@ -65,6 +97,9 @@ export default function Home() {
 
     return () => {
       observer.disconnect();
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("scroll", onScroll);
+      window.cancelAnimationFrame(frame);
       anchors.forEach((anchor) =>
         anchor.removeEventListener("click", handleAnchorClick)
       );
@@ -108,6 +143,7 @@ export default function Home() {
       </header>
 
       <main className="page-shell">
+        <div className="cursor-ring" aria-hidden />
         <section id="home" className="hero">
           <div className="hero-content reveal is-visible">
             <p className="hero-kicker">
@@ -128,6 +164,41 @@ export default function Home() {
           <div className="panel reveal" data-reveal>
             <p className="mini">SECTION</p>
             <h2>ABOUT</h2>
+            <div className="about-live">
+              <p className="about-tagline">Athlete Kingdom - The Home of Sports.</p>
+              <p>
+                Join the community of sports lovers and athletes.
+              </p>
+              <ul className="about-list">
+                <li>Inspiring stories</li>
+                <li>Clips that motivate and educate</li>
+                <li>Videos to help you grow</li>
+                <li>Showcasing the best sporting moments</li>
+                <li>And lots more</li>
+              </ul>
+
+              <div className="about-legal">
+                <h3>Copyright and Fair Use</h3>
+                <p>
+                  I ensure all my videos are transformative, featuring original
+                  commentary and creative edits that add significant value beyond
+                  the original sources.
+                </p>
+                <p>
+                  Under Section 107 of the Copyright Act 1976, allowance is made
+                  for fair use for criticism, comment, news reporting, teaching,
+                  scholarship, and research.
+                </p>
+              </div>
+
+              <div className="about-contact-strip">
+                <span>For credits, copyright issues, inquiries, or removals:</span>
+                <a href="mailto:athletekingdomedits@gmail.com">
+                  athletekingdomedits@gmail.com
+                </a>
+              </div>
+            </div>
+
             <div className="about-video-wrap">
               <video
                 ref={aboutVideoRef}
@@ -196,7 +267,7 @@ export default function Home() {
               <div className="social-grid">
                 <a
                   className="social-card"
-                  href="https://www.instagram.com/"
+                  href="https://instagram.com/athletekingdm?igsh=MWFkY2RrajhqN2psMA==&utm_source=qr"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -205,7 +276,7 @@ export default function Home() {
                 </a>
                 <a
                   className="social-card"
-                  href="https://www.tiktok.com/"
+                  href="https://tiktok.com/@athletekingdm?_t=8kQJrUQWZmw&_r=1"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -214,7 +285,7 @@ export default function Home() {
                 </a>
                 <a
                   className="social-card"
-                  href="https://www.youtube.com/"
+                  href="https://www.youtube.com/@AthleteKingdom"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
