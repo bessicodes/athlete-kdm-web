@@ -149,6 +149,7 @@ export default function Home() {
       </header>
 
       <main className="page-shell">
+        <div className="vibrant-bg" aria-hidden />
         <div className="cursor-ring" aria-hidden />
         <section id="home" className="hero">
           <div className="hero-content reveal is-visible">
