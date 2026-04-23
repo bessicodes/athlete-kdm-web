@@ -53,15 +53,15 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 62px;
-  height: 62px;
+  width: 72px;
+  height: 72px;
   overflow: hidden;
   perspective: 1000px;
 }
 
 .brand img {
-  width: 54px;
-  height: 54px;
+  width: 66px;
+  height: 66px;
   object-fit: contain;
   image-rendering: auto;
   transform-origin: center;
@@ -673,13 +673,13 @@ h2 {
   }
 
   .brand {
-    width: 54px;
-    height: 54px;
+    width: 62px;
+    height: 62px;
   }
 
   .brand img {
-    width: 46px;
-    height: 46px;
+    width: 56px;
+    height: 56px;
   }
 
   nav {
