@@ -24,7 +24,6 @@ export default function Home() {
 
     elements.forEach((element) => observer.observe(element));
 
-    const cursor = document.querySelector<HTMLElement>(".cursor-ring");
     let targetX = window.innerWidth / 2;
     let targetY = window.innerHeight / 2;
     let currentX = targetX;
@@ -46,9 +45,10 @@ export default function Home() {
     const animateCursor = () => {
       currentX += (targetX - currentX) * 0.16;
       currentY += (targetY - currentY) * 0.16;
-      if (cursor) {
-        cursor.style.transform = `translate3d(${currentX - 22}px, ${currentY - 22}px, 0)`;
-      }
+      const lagX = ((currentX / window.innerWidth) - 0.5) * 14;
+      const lagY = ((currentY / window.innerHeight) - 0.5) * 10;
+      document.documentElement.style.setProperty("--lag-x", `${lagX.toFixed(2)}px`);
+      document.documentElement.style.setProperty("--lag-y", `${lagY.toFixed(2)}px`);
       frame = window.requestAnimationFrame(animateCursor);
     };
 
@@ -100,6 +100,8 @@ export default function Home() {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("scroll", onScroll);
       window.cancelAnimationFrame(frame);
+      document.documentElement.style.setProperty("--lag-x", "0px");
+      document.documentElement.style.setProperty("--lag-y", "0px");
       anchors.forEach((anchor) =>
         anchor.removeEventListener("click", handleAnchorClick)
       );
@@ -143,7 +145,6 @@ export default function Home() {
       </header>
 
       <main className="page-shell">
-        <div className="cursor-ring" aria-hidden />
         <section id="home" className="hero">
           <div className="hero-content reveal is-visible">
             <p className="hero-kicker">
