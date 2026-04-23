@@ -109,6 +109,18 @@ export default function Home() {
         <div className="cursor-ring" aria-hidden />
 
         <section id="home" className="hero">
+          <video
+            className="hero-video"
+            src="/videos/edit1.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-hidden
+          />
+          <div className="hero-video-overlay" aria-hidden />
+
           <div className="hero-content reveal is-visible">
             <p className="hero-kicker">
               <span>THE HOME OF SPORTS</span>
