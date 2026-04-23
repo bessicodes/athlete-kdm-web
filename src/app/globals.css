@@ -625,6 +625,51 @@ h2 {
   transform: translateY(0);
 }
 
+.site-footer {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.28));
+  padding: 2.4rem 4.6vw 2.8rem;
+}
+
+.site-footer-inner {
+  width: min(100%, 1160px);
+  margin: 0 auto;
+  display: grid;
+  gap: 0.58rem;
+}
+
+.footer-brand {
+  font-size: clamp(0.88rem, 1.1vw, 1rem);
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.footer-copy {
+  font-size: clamp(0.78rem, 0.95vw, 0.9rem);
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.footer-note {
+  max-width: 78ch;
+  font-size: clamp(0.76rem, 0.92vw, 0.88rem);
+  line-height: 1.58;
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.footer-email {
+  margin-top: 0.35rem;
+  font-size: clamp(0.82rem, 1vw, 0.92rem);
+  font-weight: 700;
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  width: fit-content;
+}
+
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -835,6 +880,10 @@ h2 {
     opacity: 0.45;
   }
 
+  .site-footer {
+    padding: 2rem 4.2vw 2.3rem;
+  }
+
 }
 
 @media (max-width: 640px) {
@@ -951,5 +1000,13 @@ h2 {
   .section-mark {
     margin-top: 1rem;
     letter-spacing: 0.12em;
+  }
+
+  .site-footer {
+    padding: 1.6rem 0.92rem 2rem;
+  }
+
+  .site-footer-inner {
+    gap: 0.46rem;
   }
 }
