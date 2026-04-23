@@ -43,10 +43,52 @@ export default function Home() {
     window.addEventListener("mousemove", onMouseMove);
     frame = window.requestAnimationFrame(animateCursor);
 
+    const easeInOutCubic = (t: number) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const smoothScrollTo = (targetY: number, duration = 900) => {
+      const startY = window.scrollY;
+      const diff = targetY - startY;
+      const startTime = performance.now();
+
+      const step = (now: number) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = easeInOutCubic(progress);
+        window.scrollTo(0, startY + diff * eased);
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+
+      window.requestAnimationFrame(step);
+    };
+
+    const handleAnchorClick = (event: Event) => {
+      const target = event.currentTarget as HTMLAnchorElement;
+      const href = target.getAttribute("href");
+      if (!href || !href.startsWith("#")) return;
+      const section = document.querySelector(href);
+      if (!section) return;
+
+      event.preventDefault();
+      const headerOffset = 110;
+      const rectTop = section.getBoundingClientRect().top + window.scrollY;
+      smoothScrollTo(Math.max(rectTop - headerOffset, 0));
+    };
+
+    const anchors = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')
+    );
+    anchors.forEach((anchor) => anchor.addEventListener("click", handleAnchorClick));
+
     return () => {
       observer.disconnect();
       window.removeEventListener("mousemove", onMouseMove);
       window.cancelAnimationFrame(frame);
+      anchors.forEach((anchor) =>
+        anchor.removeEventListener("click", handleAnchorClick)
+      );
     };
   }, []);
 
@@ -67,10 +109,10 @@ export default function Home() {
         <div className="cursor-ring" aria-hidden />
 
         <section id="home" className="hero">
-          <div className="noise" />
-
           <div className="hero-content reveal is-visible">
-            <p className="mini">ATHLETE KINGDOM</p>
+            <p className="hero-kicker">
+              <span>THE HOME OF SPORTS</span>
+            </p>
             <h1>
               <span className="filled">ATHLETE</span>
               <span className="outline">KINGDOM</span>
