@@ -55,9 +55,6 @@ a {
   justify-content: center;
   width: 62px;
   height: 62px;
-  border-radius: 0.8rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
   overflow: hidden;
 }
 
@@ -66,6 +63,8 @@ a {
   height: 54px;
   object-fit: contain;
   image-rendering: auto;
+  transform-origin: center;
+  animation: logoSpinPulse 8.5s linear infinite;
 }
 
 nav {
@@ -651,6 +650,21 @@ h2 {
   100% {
     transform: translate3d(-0.6%, 1.2%, 0) scale(1.02);
     opacity: 0.55;
+  }
+}
+
+@keyframes logoSpinPulse {
+  0% {
+    transform: rotate(0deg);
+  }
+  35% {
+    transform: rotate(90deg);
+  }
+  60% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 
