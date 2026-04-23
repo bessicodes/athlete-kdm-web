@@ -255,6 +255,104 @@ h2 {
   font-weight: 700;
 }
 
+.contact-live {
+  margin-top: 1.2rem;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.contact-live p {
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.72;
+  font-size: clamp(0.98rem, 1.4vw, 1.1rem);
+}
+
+.contact-live p a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.contact-btn {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.62rem 1rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-btn.primary {
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.12));
+}
+
+.social-grid {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.social-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0.95rem;
+  padding: 1rem;
+  min-height: 88px;
+  display: grid;
+  align-content: space-between;
+  background: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.1), transparent 55%);
+  transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+}
+
+.social-card::after {
+  content: "";
+  position: absolute;
+  inset: -120% -30%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+  transform: rotate(12deg);
+  transition: transform 0.42s ease;
+}
+
+.social-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.44);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.36);
+}
+
+.social-card:hover::after {
+  transform: rotate(12deg) translateX(34%);
+}
+
+.social-card span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.social-card strong {
+  font-size: 1.12rem;
+  letter-spacing: 0.02em;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(42px);
@@ -346,6 +444,10 @@ h2 {
 
   .hero-kicker span {
     letter-spacing: 0.22em;
+  }
+
+  .social-grid {
+    grid-template-columns: 1fr;
   }
 
 }

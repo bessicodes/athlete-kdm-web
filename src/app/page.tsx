@@ -6,6 +6,7 @@ export default function Home() {
   const aboutVideoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const elements = document.querySelectorAll("[data-reveal]");
@@ -83,6 +84,16 @@ export default function Home() {
     }
   };
 
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("athletekingdomedits@gmail.com");
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1400);
+    } catch {
+      setCopied(false);
+    }
+  };
+
   return (
     <>
       <header className="site-header">
@@ -157,7 +168,63 @@ export default function Home() {
           <div className="panel reveal" data-reveal>
             <p className="mini">SECTION</p>
             <h2>CONTACT</h2>
-            <p className="section-mark">ATHLETE KINGDOM</p>
+            <div className="contact-live">
+              <p>
+                Get in touch with Athlete Kingdom for collaborations, questions,
+                copyright inquiries, or to connect with the sports community.
+                Reach out via email at{" "}
+                <a href="mailto:athletekingdomedits@gmail.com">
+                  athletekingdomedits@gmail.com
+                </a>{" "}
+                or follow Athlete Kingdom on Instagram, TikTok, and YouTube.
+                Whether you&apos;re an athlete, creator, or sports fan, this is
+                the place to connect and become part of The Home of Sports.
+              </p>
+
+              <div className="contact-actions">
+                <a
+                  className="contact-btn primary"
+                  href="mailto:athletekingdomedits@gmail.com"
+                >
+                  Email Athlete Kingdom
+                </a>
+                <button className="contact-btn" type="button" onClick={copyEmail}>
+                  {copied ? "Email Copied" : "Copy Email"}
+                </button>
+              </div>
+
+              <div className="social-grid">
+                <a
+                  className="social-card"
+                  href="https://www.instagram.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>Instagram</span>
+                  <strong>Follow</strong>
+                </a>
+                <a
+                  className="social-card"
+                  href="https://www.tiktok.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>TikTok</span>
+                  <strong>Follow</strong>
+                </a>
+                <a
+                  className="social-card"
+                  href="https://www.youtube.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>YouTube</span>
+                  <strong>Subscribe</strong>
+                </a>
+              </div>
+            </div>
+
+            <p className="section-mark">THE HOME OF SPORTS</p>
           </div>
         </section>
       </main>
