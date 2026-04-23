@@ -231,12 +231,6 @@ export default function Home() {
                   </p>
                 </details>
 
-                <div className="about-contact-strip">
-                  <span>Credits, copyright, inquiries, or removal requests:</span>
-                  <a href="mailto:athletekingdomedits@gmail.com">
-                    athletekingdomedits@gmail.com
-                  </a>
-                </div>
               </div>
 
               <div className="about-media">
