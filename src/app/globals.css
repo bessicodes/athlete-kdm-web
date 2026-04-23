@@ -50,10 +50,22 @@ a {
 }
 
 .brand {
-  font-size: clamp(0.95rem, 1.5vw, 1.35rem);
-  font-weight: 800;
-  letter-spacing: 0.17em;
-  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.brand img {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  image-rendering: auto;
 }
 
 nav {
@@ -650,8 +662,13 @@ h2 {
   }
 
   .brand {
-    font-size: 0.9rem;
-    letter-spacing: 0.15em;
+    width: 54px;
+    height: 54px;
+  }
+
+  .brand img {
+    width: 46px;
+    height: 46px;
   }
 
   nav {

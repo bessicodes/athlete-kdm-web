@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
@@ -146,7 +147,15 @@ export default function Home() {
     <>
       <header className="site-header">
         <a href="#home" className="brand">
-          ATHLETE KINGDOM
+          <Image
+            src="/images/kdm-logo-header.png"
+            alt="Athlete Kingdom logo"
+            width={58}
+            height={58}
+            unoptimized
+            quality={100}
+            priority
+          />
         </a>
         <nav>
           <a href="#home">HOME</a>
