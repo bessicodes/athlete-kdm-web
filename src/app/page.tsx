@@ -165,72 +165,89 @@ export default function Home() {
           <div className="panel reveal" data-reveal>
             <p className="mini">SECTION</p>
             <h2>ABOUT</h2>
-            <div className="about-live">
-              <p className="about-tagline">Athlete Kingdom - The Home of Sports.</p>
-              <p>
-                Join the community of sports lovers and athletes.
-              </p>
-              <ul className="about-list">
-                <li>Inspiring stories</li>
-                <li>Clips that motivate and educate</li>
-                <li>Videos to help you grow</li>
-                <li>Showcasing the best sporting moments</li>
-                <li>And lots more</li>
-              </ul>
+            <div className="about-layout">
+              <div className="about-content">
+                <article className="about-block">
+                  <span className="about-badge">Identity</span>
+                  <h3>Athlete Kingdom: The Home of Sports</h3>
+                  <p>
+                    Join the community of sports lovers and athletes and connect
+                    with content designed to inspire progress.
+                  </p>
+                </article>
 
-              <div className="about-legal">
-                <h3>Copyright and Fair Use</h3>
-                <p>
-                  I ensure all my videos are transformative, featuring original
-                  commentary and creative edits that add significant value beyond
-                  the original sources.
-                </p>
-                <p>
-                  Under Section 107 of the Copyright Act 1976, allowance is made
-                  for fair use for criticism, comment, news reporting, teaching,
-                  scholarship, and research.
-                </p>
+                <article className="about-block">
+                  <span className="about-badge">What You Get</span>
+                  <ul className="about-list">
+                    <li>Inspiring stories from the world of sport</li>
+                    <li>Clips that motivate and educate</li>
+                    <li>Videos to help you grow</li>
+                    <li>The best sporting moments and highlights</li>
+                    <li>Consistent creative content and more</li>
+                  </ul>
+                </article>
+
+                <details className="about-legal" open>
+                  <summary>Copyright and Fair Use</summary>
+                  <p>
+                    I ensure all videos are transformative, featuring original
+                    commentary and creative edits that add value beyond source
+                    material.
+                  </p>
+                  <p>
+                    Under Section 107 of the Copyright Act 1976, fair use
+                    includes criticism, comment, news reporting, teaching,
+                    scholarship, and research.
+                  </p>
+                </details>
+
+                <div className="about-contact-strip">
+                  <span>Credits, copyright, inquiries, or removal requests:</span>
+                  <a href="mailto:athletekingdomedits@gmail.com">
+                    athletekingdomedits@gmail.com
+                  </a>
+                </div>
               </div>
 
-              <div className="about-contact-strip">
-                <span>For credits, copyright issues, inquiries, or removals:</span>
-                <a href="mailto:athletekingdomedits@gmail.com">
-                  athletekingdomedits@gmail.com
-                </a>
-              </div>
-            </div>
+              <div className="about-media">
+                <div className="about-video-wrap">
+                  <video
+                    ref={aboutVideoRef}
+                    className="about-video"
+                    autoPlay
+                    muted={isMuted}
+                    loop
+                    playsInline
+                    preload="auto"
+                    onPause={() => setIsPlaying(false)}
+                    onPlay={() => setIsPlaying(true)}
+                  >
+                    <source src="./videos/edit1.mp4" type="video/mp4" />
+                    Your browser does not support this video format.
+                  </video>
+                  <button
+                    type="button"
+                    className="video-toggle"
+                    onClick={toggleVideoPlayback}
+                    aria-label={isPlaying ? "Pause video" : "Play video"}
+                  >
+                    {isPlaying ? "Pause" : "Play"}
+                  </button>
+                  <button
+                    type="button"
+                    className="video-toggle sound"
+                    onClick={() => setIsMuted((prev) => !prev)}
+                    aria-label={isMuted ? "Unmute video" : "Mute video"}
+                  >
+                    {isMuted ? "Sound On" : "Sound Off"}
+                  </button>
+                </div>
 
-            <div className="about-video-wrap">
-              <video
-                ref={aboutVideoRef}
-                className="about-video"
-                autoPlay
-                muted={isMuted}
-                loop
-                playsInline
-                preload="auto"
-                onPause={() => setIsPlaying(false)}
-                onPlay={() => setIsPlaying(true)}
-              >
-                <source src="./videos/edit1.mp4" type="video/mp4" />
-                Your browser does not support this video format.
-              </video>
-              <button
-                type="button"
-                className="video-toggle"
-                onClick={toggleVideoPlayback}
-                aria-label={isPlaying ? "Pause video" : "Play video"}
-              >
-                {isPlaying ? "Pause" : "Play"}
-              </button>
-              <button
-                type="button"
-                className="video-toggle sound"
-                onClick={() => setIsMuted((prev) => !prev)}
-                aria-label={isMuted ? "Unmute video" : "Mute video"}
-              >
-                {isMuted ? "Sound On" : "Sound Off"}
-              </button>
+                <div className="about-media-meta">
+                  <span>Transformative edits</span>
+                  <span>Community-first sports content</span>
+                </div>
+              </div>
             </div>
             <p className="section-mark">ATHLETE KINGDOM</p>
           </div>
