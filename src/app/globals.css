@@ -931,15 +931,17 @@ h2 {
 }
 
 .site-footer-inner {
-  width: min(100%, 1160px);
+  width: min(100%, 920px);
   margin: 0 auto;
   display: grid;
-  gap: 0.58rem;
+  gap: 0.62rem;
+  text-align: center;
+  justify-items: center;
 }
 
 .footer-brand {
   font-size: clamp(0.88rem, 1.1vw, 1rem);
-  letter-spacing: 0.17em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   font-weight: 800;
   color: rgba(255, 255, 255, 0.92);
@@ -947,13 +949,13 @@ h2 {
 
 .footer-copy {
   font-size: clamp(0.78rem, 0.95vw, 0.9rem);
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.74);
 }
 
 .footer-note {
-  max-width: 78ch;
+  max-width: 74ch;
   font-size: clamp(0.76rem, 0.92vw, 0.88rem);
-  line-height: 1.58;
+  line-height: 1.62;
   color: rgba(255, 255, 255, 0.64);
 }
 

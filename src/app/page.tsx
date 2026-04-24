@@ -631,10 +631,8 @@ export default function Home() {
 
       <footer className="site-footer">
         <div className="site-footer-inner">
-          <p className="footer-brand">Athlete Kingdom</p>
-          <p className="footer-copy">
-            © {new Date().getFullYear()} Athlete Kingdom. All rights reserved.
-          </p>
+          <p className="footer-brand">ATHLETE KINGDOM</p>
+          <p className="footer-copy">© 2026 Athlete Kingdom. All rights reserved.</p>
           <p className="footer-note">
             Content is transformative and shared under fair use principles
             (Copyright Act Section 107) for commentary, education, and creative
