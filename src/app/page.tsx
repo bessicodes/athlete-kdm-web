@@ -202,9 +202,10 @@ export default function Home() {
     updateScrollMotion();
     window.addEventListener("resize", setHeaderOffset);
 
-    if (!window.location.hash) {
-      window.scrollTo(0, 0);
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
     }
+    window.scrollTo(0, 0);
 
     const easeInOutQuint = (t: number) =>
       t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2;
