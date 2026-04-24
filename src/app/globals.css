@@ -55,6 +55,12 @@ a {
   transition: background 0.4s ease, padding 0.35s ease;
 }
 
+.header-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
 .site-header.is-solid {
   background: transparent;
 }
@@ -82,6 +88,40 @@ a {
 
 .brand.intro-logo {
   animation: introFadeIn 0.75s ease both;
+}
+
+.header-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.46rem;
+  margin-left: 0.05rem;
+}
+
+.header-social a {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.86);
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease,
+    color 0.22s ease;
+}
+
+.header-social a svg {
+  width: 0.92rem;
+  height: 0.92rem;
+  stroke: currentColor;
+  stroke-width: 1.7;
+}
+
+.header-social a:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
 }
 
 nav {
@@ -1100,6 +1140,10 @@ h2 {
     gap: 0.7rem;
   }
 
+  .header-left {
+    gap: 0.6rem;
+  }
+
   .brand {
     width: 62px;
     height: 62px;
@@ -1108,6 +1152,11 @@ h2 {
   .brand img {
     width: 94px;
     height: 94px;
+  }
+
+  .header-social a {
+    width: 1.9rem;
+    height: 1.9rem;
   }
 
   nav {
@@ -1254,6 +1303,11 @@ h2 {
     gap: 0.56rem;
   }
 
+  .header-left {
+    width: 100%;
+    justify-content: center;
+  }
+
   .brand {
     width: 56px;
     height: 56px;
@@ -1262,6 +1316,20 @@ h2 {
   .brand img {
     width: 80px;
     height: 80px;
+  }
+
+  .header-social {
+    gap: 0.38rem;
+  }
+
+  .header-social a {
+    width: 1.78rem;
+    height: 1.78rem;
+  }
+
+  .header-social a svg {
+    width: 0.84rem;
+    height: 0.84rem;
   }
 
   nav {
