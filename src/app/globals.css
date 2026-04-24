@@ -110,11 +110,11 @@ a {
     color 0.22s ease;
 }
 
-.header-social a svg {
-  width: 1.24rem;
-  height: 1.24rem;
-  stroke: currentColor;
-  stroke-width: 2.05;
+.header-social a img {
+  width: 1.28rem;
+  height: 1.28rem;
+  object-fit: contain;
+  display: block;
 }
 
 .header-social a:hover {
@@ -1159,9 +1159,9 @@ h2 {
     height: 2.12rem;
   }
 
-  .header-social a svg {
-    width: 1.12rem;
-    height: 1.12rem;
+  .header-social a img {
+    width: 1.14rem;
+    height: 1.14rem;
   }
 
   nav {
@@ -1333,9 +1333,9 @@ h2 {
     height: 2rem;
   }
 
-  .header-social a svg {
-    width: 1.02rem;
-    height: 1.02rem;
+  .header-social a img {
+    width: 1.04rem;
+    height: 1.04rem;
   }
 
   nav {

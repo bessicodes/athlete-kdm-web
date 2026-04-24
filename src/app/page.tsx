@@ -360,11 +360,7 @@ export default function Home() {
               rel="noopener noreferrer"
               aria-label="Instagram"
             >
-              <svg viewBox="0 0 24 24" fill="none">
-                <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
-                <circle cx="12" cy="12" r="4.2" />
-                <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" />
-              </svg>
+              <img src="./images/instagram.png" alt="" aria-hidden />
             </a>
             <a
               href="https://tiktok.com/@athletekingdm?_t=8kQJrUQWZmw&_r=1"
@@ -372,10 +368,7 @@ export default function Home() {
               rel="noopener noreferrer"
               aria-label="TikTok"
             >
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M14 5v8.1a3.1 3.1 0 1 1-2.2-2.9" />
-                <path d="M14 5c.9 1.8 2.1 2.9 4 3.2" />
-              </svg>
+              <img src="./images/tiktok.png" alt="" aria-hidden />
             </a>
             <a
               href="https://www.youtube.com/@AthleteKingdom"
@@ -383,10 +376,7 @@ export default function Home() {
               rel="noopener noreferrer"
               aria-label="YouTube"
             >
-              <svg viewBox="0 0 24 24" fill="none">
-                <rect x="2.5" y="6.5" width="19" height="11" rx="3.5" />
-                <path d="M10 9.5 15.5 12 10 14.5z" fill="currentColor" />
-              </svg>
+              <img src="./images/youtube.png" alt="" aria-hidden />
             </a>
             <a
               href="https://discord.gg/GcxaVPDgsg"
@@ -394,11 +384,7 @@ export default function Home() {
               rel="noopener noreferrer"
               aria-label="Discord"
             >
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M7.2 8.2a13.5 13.5 0 0 1 3.1-.9l.4.8a10.5 10.5 0 0 1 2.6 0l.4-.8a13.5 13.5 0 0 1 3.1.9c1.3 1.9 2 3.9 2 6.1a13 13 0 0 1-3.8 2l-.8-1.3c.5-.2 1-.4 1.4-.7-.1-.1-.2-.2-.4-.3-1.9.9-3.9.9-5.8 0-.1.1-.2.2-.4.3.5.3.9.5 1.4.7l-.8 1.3a13 13 0 0 1-3.8-2c0-2.2.7-4.2 2-6.1Z" />
-                <circle cx="10.2" cy="12.2" r="1.1" fill="currentColor" />
-                <circle cx="13.8" cy="12.2" r="1.1" fill="currentColor" />
-              </svg>
+              <img src="./images/discord.png" alt="" aria-hidden />
             </a>
           </div>
         </div>
