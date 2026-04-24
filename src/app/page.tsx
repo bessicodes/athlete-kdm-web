@@ -415,6 +415,11 @@ export default function Home() {
               <span className="filled">ATHLETE</span>
               <span className="outline">KINGDOM</span>
             </h1>
+            <div className="hero-fog" aria-hidden>
+              <span className="fog-layer fog-a" />
+              <span className="fog-layer fog-b" />
+              <span className="fog-layer fog-c" />
+            </div>
           </div>
 
           <a href="#about" className="scroll-indicator" aria-label="Scroll down">

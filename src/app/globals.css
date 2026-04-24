@@ -246,6 +246,52 @@ h1 {
   animation: slideUp 1s ease 0.24s both;
 }
 
+.hero-fog {
+  position: relative;
+  width: min(740px, 82vw);
+  height: clamp(56px, 8vw, 96px);
+  margin: clamp(0.8rem, 2.2vw, 1.4rem) auto 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.52;
+  filter: blur(14px);
+}
+
+.fog-layer {
+  position: absolute;
+  border-radius: 999px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.34) 0%,
+    rgba(255, 255, 255, 0.16) 42%,
+    rgba(255, 255, 255, 0) 74%
+  );
+}
+
+.fog-a {
+  width: 52%;
+  height: 78%;
+  left: 4%;
+  top: 10%;
+  animation: fogDriftA 8s ease-in-out infinite alternate;
+}
+
+.fog-b {
+  width: 62%;
+  height: 86%;
+  left: 24%;
+  top: 2%;
+  animation: fogDriftB 10s ease-in-out infinite alternate;
+}
+
+.fog-c {
+  width: 45%;
+  height: 72%;
+  left: 56%;
+  top: 16%;
+  animation: fogDriftC 9s ease-in-out infinite alternate;
+}
+
 .scroll-indicator {
   position: absolute;
   bottom: max(1.15rem, calc(env(safe-area-inset-bottom) + 0.55rem));
@@ -852,6 +898,39 @@ h2 {
   }
 }
 
+@keyframes fogDriftA {
+  0% {
+    transform: translateX(-4%) scale(0.98);
+    opacity: 0.44;
+  }
+  100% {
+    transform: translateX(7%) scale(1.08);
+    opacity: 0.64;
+  }
+}
+
+@keyframes fogDriftB {
+  0% {
+    transform: translateX(-6%) translateY(2%) scale(1);
+    opacity: 0.34;
+  }
+  100% {
+    transform: translateX(6%) translateY(-2%) scale(1.1);
+    opacity: 0.58;
+  }
+}
+
+@keyframes fogDriftC {
+  0% {
+    transform: translateX(-5%) scale(0.95);
+    opacity: 0.28;
+  }
+  100% {
+    transform: translateX(8%) scale(1.06);
+    opacity: 0.52;
+  }
+}
+
 @keyframes introFadeIn {
   from {
     opacity: 0;
@@ -918,6 +997,11 @@ h2 {
 
   .hero-kicker span {
     letter-spacing: 0.22em;
+  }
+
+  .hero-fog {
+    width: min(560px, 90vw);
+    opacity: 0.46;
   }
 
 
@@ -1051,6 +1135,13 @@ h2 {
     letter-spacing: 0.18em;
   }
 
+  .hero-fog {
+    height: 52px;
+    margin-top: 0.66rem;
+    filter: blur(11px);
+    opacity: 0.42;
+  }
+
 
   h1 {
     gap: 0.5rem;
@@ -1141,5 +1232,11 @@ h2 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .fog-a,
+  .fog-b,
+  .fog-c {
+    animation: none !important;
   }
 }
