@@ -42,6 +42,36 @@ export default function Home() {
       const scrollDelta = window.scrollY - lastScrollY;
       targetY += scrollDelta * 0.22;
       lastScrollY = window.scrollY;
+      updateScrollMotion();
+    };
+
+    const updateScrollMotion = () => {
+      const maxScrollable = Math.max(
+        document.documentElement.scrollHeight - window.innerHeight,
+        1
+      );
+      const ratio = Math.min(Math.max(window.scrollY / maxScrollable, 0), 1);
+      const heroShift = -ratio * 22;
+      const panelShift = -ratio * 12;
+      const bgShiftX = ratio * 22;
+      const bgShiftY = ratio * 36;
+      document.documentElement.style.setProperty("--scroll-ratio", ratio.toFixed(4));
+      document.documentElement.style.setProperty(
+        "--hero-parallax-y",
+        `${heroShift.toFixed(2)}px`
+      );
+      document.documentElement.style.setProperty(
+        "--panel-parallax-y",
+        `${panelShift.toFixed(2)}px`
+      );
+      document.documentElement.style.setProperty(
+        "--bg-shift-x",
+        `${bgShiftX.toFixed(2)}px`
+      );
+      document.documentElement.style.setProperty(
+        "--bg-shift-y",
+        `${bgShiftY.toFixed(2)}px`
+      );
     };
 
     const animateCursor = () => {
@@ -65,6 +95,7 @@ export default function Home() {
     };
 
     setHeaderOffset();
+    updateScrollMotion();
     window.addEventListener("resize", setHeaderOffset);
 
     if (!window.location.hash) {
@@ -136,6 +167,11 @@ export default function Home() {
       }
       document.documentElement.style.setProperty("--lag-x", "0px");
       document.documentElement.style.setProperty("--lag-y", "0px");
+      document.documentElement.style.setProperty("--scroll-ratio", "0");
+      document.documentElement.style.setProperty("--hero-parallax-y", "0px");
+      document.documentElement.style.setProperty("--panel-parallax-y", "0px");
+      document.documentElement.style.setProperty("--bg-shift-x", "0px");
+      document.documentElement.style.setProperty("--bg-shift-y", "0px");
       anchors.forEach((anchor) =>
         anchor.removeEventListener("click", handleAnchorClick)
       );
