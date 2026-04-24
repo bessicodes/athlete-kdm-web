@@ -294,7 +294,7 @@ h1 {
 
 .scroll-indicator {
   position: absolute;
-  bottom: max(1.15rem, calc(env(safe-area-inset-bottom) + 0.55rem));
+  bottom: max(2.65rem, calc(env(safe-area-inset-bottom) + 1.55rem));
   left: 50%;
   transform: translateX(-50%);
   width: 30px;
@@ -1131,7 +1131,7 @@ h2 {
   }
 
   .scroll-indicator {
-    bottom: max(0.9rem, calc(env(safe-area-inset-bottom) + 0.35rem));
+    bottom: max(2.35rem, calc(env(safe-area-inset-bottom) + 1.25rem));
   }
 
   .panel-section {
