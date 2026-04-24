@@ -382,6 +382,27 @@ export default function Home() {
           </a>
         </section>
 
+        <section id="merch" className="panel-section">
+          <div className="panel reveal merch-panel" data-reveal>
+            <h2>MERCH</h2>
+            <div className="merch-live">
+              <p className="merch-kicker">Athlete Kingdom Merch</p>
+              <h3>Coming Soon!</h3>
+              <p>
+                Performance-driven style is on the way. Get ready for premium
+                Athlete Kingdom drops made for athletes, creators, and the sports
+                community.
+              </p>
+              <div className="merch-tags">
+                <span>Limited Drops</span>
+                <span>Premium Quality</span>
+                <span>Built For Athletes</span>
+              </div>
+            </div>
+            <p className="section-mark">STAY READY</p>
+          </div>
+        </section>
+
         <section id="about" className="panel-section">
           <div className="panel reveal" data-reveal>
             <h2>ABOUT</h2>
