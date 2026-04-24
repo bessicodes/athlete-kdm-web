@@ -116,6 +116,7 @@ export default function Home() {
     let currentY = targetY;
     let frame = 0;
     let lastScrollY = window.scrollY;
+    let navSolidState = lastScrollY > 80;
 
     const onMouseMove = (event: MouseEvent) => {
       targetX = event.clientX;
@@ -123,7 +124,11 @@ export default function Home() {
     };
 
     const onScroll = () => {
-      setIsNavSolid(window.scrollY > 80);
+      const nextNavSolid = window.scrollY > 80;
+      if (nextNavSolid !== navSolidState) {
+        navSolidState = nextNavSolid;
+        setIsNavSolid(nextNavSolid);
+      }
 
       const scrollDelta = window.scrollY - lastScrollY;
       if (!prefersReducedMotion) {
@@ -217,7 +222,7 @@ export default function Home() {
         return;
       }
 
-      const duration = Math.min(1500, Math.max(760, distance * 0.9));
+      const duration = Math.min(900, Math.max(420, distance * 0.42));
       const startTime = performance.now();
 
       if (scrollFrame) {
