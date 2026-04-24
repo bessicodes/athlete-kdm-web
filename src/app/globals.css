@@ -106,8 +106,8 @@ a {
 }
 
 .header-social a img {
-  width: 2rem;
-  height: 2rem;
+  width: 2.85rem;
+  height: 2.85rem;
   object-fit: contain;
   display: block;
   filter: brightness(1.04) contrast(1.04);
@@ -1154,8 +1154,8 @@ h2 {
   }
 
   .header-social a img {
-    width: 1.78rem;
-    height: 1.78rem;
+    width: 2.35rem;
+    height: 2.35rem;
   }
 
   nav {
@@ -1328,8 +1328,8 @@ h2 {
   }
 
   .header-social a img {
-    width: 1.52rem;
-    height: 1.52rem;
+    width: 2.05rem;
+    height: 2.05rem;
   }
 
   nav {
