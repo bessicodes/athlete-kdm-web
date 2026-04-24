@@ -355,7 +355,7 @@ export default function Home() {
         <nav>
           <a href="#home">HOME</a>
           <a href="#about">ABOUT</a>
-          <a href="#contact">CONTACT</a>
+          <a href="#contact">ENQUIRIES</a>
         </nav>
       </header>
 
@@ -384,7 +384,7 @@ export default function Home() {
 
         <section id="merch" className="panel-section">
           <div className="panel reveal merch-panel" data-reveal>
-            <h2>MERCH</h2>
+            <h2 className="section-heading">MERCH</h2>
             <div className="merch-live">
               <p className="merch-kicker">Athlete Kingdom Merch</p>
               <h3>Coming Soon!</h3>
@@ -405,7 +405,7 @@ export default function Home() {
 
         <section id="about" className="panel-section">
           <div className="panel reveal" data-reveal>
-            <h2>ABOUT</h2>
+            <h2 className="section-heading">ABOUT</h2>
             <div className="about-layout">
               <div className="about-content">
                 <article className="about-block">
@@ -494,7 +494,7 @@ export default function Home() {
 
         <section id="contact" className="panel-section">
           <div className="panel reveal" data-reveal>
-            <h2>CONTACT</h2>
+            <h2 className="section-heading">ENQUIRIES</h2>
             <div className="contact-live">
               <div className="contact-intro">
                 <p className="contact-eyebrow">Join the Kingdom Community</p>

@@ -594,6 +594,10 @@ h2 {
   margin-bottom: 0.85rem;
 }
 
+.section-heading {
+  text-align: center;
+}
+
 .section-mark {
   margin-top: 1.55rem;
   color: transparent;
