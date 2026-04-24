@@ -393,7 +393,6 @@ export default function Home() {
             width={90}
             height={90}
             unoptimized
-            quality={100}
             priority
           />
         </a>
