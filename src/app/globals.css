@@ -59,6 +59,7 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.86rem;
+  min-width: 0;
 }
 
 .site-header.is-solid {
@@ -95,19 +96,23 @@ a {
   align-items: center;
   gap: 0.36rem;
   margin-left: 0.28rem;
+  flex-wrap: nowrap;
+  min-width: 0;
 }
 
 .header-social a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-width: 2.1rem;
+  min-height: 2.1rem;
   color: rgba(255, 255, 255, 0.9);
   transition: transform 0.22s ease, opacity 0.22s ease;
 }
 
 .header-social a img {
-  width: 3.95rem;
-  height: 3.95rem;
+  width: 3.6rem;
+  height: 3.6rem;
   object-fit: contain;
   display: block;
   filter: brightness(1.04) contrast(1.04);
@@ -1138,6 +1143,8 @@ h2 {
 
   .header-left {
     gap: 0.74rem;
+    width: min(100%, 700px);
+    justify-content: center;
   }
 
   .brand {
@@ -1151,13 +1158,13 @@ h2 {
   }
 
   .header-social a {
-    min-width: 1.8rem;
-    min-height: 1.8rem;
+    min-width: 1.86rem;
+    min-height: 1.86rem;
   }
 
   .header-social a img {
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 2.45rem;
+    height: 2.45rem;
   }
 
   nav {
@@ -1305,8 +1312,9 @@ h2 {
   }
 
   .header-left {
-    width: 100%;
+    width: min(100%, 420px);
     justify-content: center;
+    gap: 0.56rem;
   }
 
   .brand {
@@ -1321,17 +1329,17 @@ h2 {
 
   .header-social {
     gap: 0.32rem;
-    margin-left: 0.18rem;
+    margin-left: 0.06rem;
   }
 
   .header-social a {
-    min-width: 1.58rem;
-    min-height: 1.58rem;
+    min-width: 1.64rem;
+    min-height: 1.64rem;
   }
 
   .header-social a img {
-    width: 2.8rem;
-    height: 2.8rem;
+    width: 2.02rem;
+    height: 2.02rem;
   }
 
   nav {
@@ -1393,6 +1401,7 @@ h2 {
 
   .panel {
     padding: 1rem;
+    width: min(100%, 100%);
   }
 
   h2 {
@@ -1468,6 +1477,10 @@ h2 {
 
   .site-footer-inner {
     gap: 0.46rem;
+  }
+
+  .footer-note {
+    max-width: 38ch;
   }
 }
 
