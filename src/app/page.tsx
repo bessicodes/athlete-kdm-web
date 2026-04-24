@@ -520,24 +520,31 @@ export default function Home() {
             <h2>CONTACT</h2>
             <div className="contact-live">
               <div className="contact-intro">
+                <p className="contact-eyebrow">Join the Kingdom Community</p>
+                <h3 className="contact-title">
+                  Let&apos;s connect, collaborate, and build the home of sports
+                  together.
+                </h3>
                 <p>
-                  Get in touch with Athlete Kingdom for collaborations, questions,
-                  copyright inquiries, or to connect with the sports community.
-                  Reach out via email at{" "}
+                  Athlete Kingdom welcomes athletes, creators, brands, and sports
+                  fans who want to grow with a passionate community. For
+                  collaborations, questions, copyright support, or partnership
+                  ideas, reach out via{" "}
                   <a href="mailto:athletekingdomedits@gmail.com">
                     athletekingdomedits@gmail.com
-                  </a>{" "}
-                  or follow Athlete Kingdom on Instagram, TikTok, and YouTube.
-                  Whether you&apos;re an athlete, creator, or sports fan, this is
-                  the place to connect and become part of The Home of Sports.
+                  </a>
+                  . You&apos;re always welcome here.
                 </p>
+                <blockquote className="contact-quote">
+                  Built by passion. Driven by athletes.
+                </blockquote>
 
                 <div className="contact-actions">
                   <a
                     className="contact-btn primary"
                     href="mailto:athletekingdomedits@gmail.com"
                   >
-                    Email Athlete Kingdom
+                    Start a Conversation
                   </a>
                   <button className="contact-btn" type="button" onClick={copyEmail}>
                     {copied ? "Email Copied" : "Copy Email"}
@@ -546,7 +553,7 @@ export default function Home() {
               </div>
 
               <div className="contact-social-wrap">
-                <p className="contact-kicker">Connect with Athlete Kingdom</p>
+                <p className="contact-kicker">Connect on Social</p>
                 <div className="social-grid">
                   <a
                     className="social-card"
@@ -554,8 +561,17 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <span>Instagram</span>
-                    <strong>Follow</strong>
+                    <span className="social-icon" aria-hidden>
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+                        <circle cx="12" cy="12" r="4.2" />
+                        <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" />
+                      </svg>
+                    </span>
+                    <span className="social-copy">
+                      <small>Instagram</small>
+                      <strong>Follow Athlete Kingdom</strong>
+                    </span>
                   </a>
                   <a
                     className="social-card"
@@ -563,8 +579,16 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <span>TikTok</span>
-                    <strong>Follow</strong>
+                    <span className="social-icon" aria-hidden>
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M14 5v8.1a3.1 3.1 0 1 1-2.2-2.9" />
+                        <path d="M14 5c.9 1.8 2.1 2.9 4 3.2" />
+                      </svg>
+                    </span>
+                    <span className="social-copy">
+                      <small>TikTok</small>
+                      <strong>Watch Fresh Edits</strong>
+                    </span>
                   </a>
                   <a
                     className="social-card"
@@ -572,8 +596,16 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <span>YouTube</span>
-                    <strong>Subscribe</strong>
+                    <span className="social-icon" aria-hidden>
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <rect x="2.5" y="6.5" width="19" height="11" rx="3.5" />
+                        <path d="M10 9.5 15.5 12 10 14.5z" fill="currentColor" />
+                      </svg>
+                    </span>
+                    <span className="social-copy">
+                      <small>YouTube</small>
+                      <strong>Subscribe for Weekly Drops</strong>
+                    </span>
                   </a>
                 </div>
               </div>
