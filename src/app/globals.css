@@ -93,7 +93,7 @@ a {
 .header-social {
   display: inline-flex;
   align-items: center;
-  gap: 0.72rem;
+  gap: 0.36rem;
   margin-left: 0.28rem;
 }
 
@@ -106,8 +106,8 @@ a {
 }
 
 .header-social a img {
-  width: 7.125rem;
-  height: 7.125rem;
+  width: 3.56rem;
+  height: 3.56rem;
   object-fit: contain;
   display: block;
   filter: brightness(1.04) contrast(1.04);
@@ -1154,8 +1154,8 @@ h2 {
   }
 
   .header-social a img {
-    width: 5.875rem;
-    height: 5.875rem;
+    width: 2.94rem;
+    height: 2.94rem;
   }
 
   nav {
@@ -1318,7 +1318,7 @@ h2 {
   }
 
   .header-social {
-    gap: 0.54rem;
+    gap: 0.32rem;
     margin-left: 0.18rem;
   }
 
@@ -1328,8 +1328,8 @@ h2 {
   }
 
   .header-social a img {
-    width: 5.125rem;
-    height: 5.125rem;
+    width: 2.56rem;
+    height: 2.56rem;
   }
 
   nav {
