@@ -437,7 +437,6 @@ export default function Home() {
               <div className="merch-tags">
                 <span>Limited Drops</span>
                 <span>Premium Quality</span>
-                <span>Built For Athletes</span>
               </div>
             </div>
             <p className="section-mark">STAY READY</p>
