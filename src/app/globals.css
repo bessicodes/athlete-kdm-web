@@ -730,7 +730,7 @@ h2 {
 }
 
 .contact-intro,
-.contact-social-wrap {
+.enquiry-form {
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 1rem;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent);
@@ -775,6 +775,72 @@ h2 {
   flex-wrap: wrap;
   gap: 0.68rem;
   margin-top: 1.02rem;
+}
+
+.enquiry-form {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.enquiry-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.enquiry-field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.enquiry-field span {
+  font-size: 0.73rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.enquiry-field input,
+.enquiry-field textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.7rem;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  padding: 0.72rem 0.82rem;
+  font: inherit;
+  line-height: 1.4;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.enquiry-field textarea {
+  resize: vertical;
+  min-height: 118px;
+}
+
+.enquiry-field input::placeholder,
+.enquiry-field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.44);
+}
+
+.enquiry-field input:focus,
+.enquiry-field textarea:focus {
+  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(0, 0, 0, 0.46);
+}
+
+.enquiry-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.enquiry-notice {
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.74);
 }
 
 .contact-btn {
@@ -1269,8 +1335,8 @@ h2 {
     line-height: 1.62;
   }
 
-  .contact-intro,
-  .contact-social-wrap {
+.contact-intro,
+.enquiry-form {
     border-radius: 0.85rem;
     padding: 0.95rem;
   }
@@ -1444,6 +1510,14 @@ h2 {
   .contact-btn {
     width: 100%;
     text-align: center;
+  }
+
+  .enquiry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .enquiry-actions {
+    gap: 0.6rem;
   }
 
   .social-card {

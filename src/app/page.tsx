@@ -9,6 +9,10 @@ export default function Home() {
   const [isMuted, setIsMuted] = useState(true);
   const [copied, setCopied] = useState(false);
   const [isNavSolid, setIsNavSolid] = useState(false);
+  const [enquiryName, setEnquiryName] = useState("");
+  const [enquiryEmail, setEnquiryEmail] = useState("");
+  const [enquiryMessage, setEnquiryMessage] = useState("");
+  const [enquiryNotice, setEnquiryNotice] = useState("");
 
   const stats = [
     { label: "Clips Edited", target: 420, suffix: "+" },
@@ -23,17 +27,10 @@ export default function Home() {
 
     const revealTargets = Array.from(
       document.querySelectorAll<HTMLElement>(
-        ".panel-section, .panel, .about-block, .about-legal, .about-video-wrap, .contact-intro, .contact-social-wrap, .social-card, .site-footer-inner"
+        ".panel-section, .panel, .about-block, .about-legal, .about-video-wrap, .contact-intro, .enquiry-form, .site-footer-inner"
       )
     );
     revealTargets.forEach((element) => element.classList.add("reveal-up"));
-
-    const gridCards = Array.from(
-      document.querySelectorAll<HTMLElement>(".social-grid .social-card")
-    );
-    gridCards.forEach((card, index) =>
-      card.style.setProperty("--stagger-delay", `${index * 100}ms`)
-    );
 
     let revealObserver: IntersectionObserver | null = null;
     if (prefersReducedMotion) {
@@ -344,6 +341,27 @@ export default function Home() {
     }
   };
 
+  const submitEnquiry = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const name = enquiryName.trim();
+    const email = enquiryEmail.trim();
+    const message = enquiryMessage.trim();
+
+    if (!name || !email || !message) {
+      setEnquiryNotice("Please fill in name, email, and message.");
+      return;
+    }
+
+    const subject = `Athlete Kingdom Enquiry - ${name}`;
+    const body = [`Name: ${name}`, `Email: ${email}`, "", "Message:", message].join(
+      "\n"
+    );
+    window.location.href = `mailto:athletekingdomedits@gmail.com?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+    setEnquiryNotice("Opening your email app to send this enquiry.");
+  };
+
   return (
     <>
       <header className={`site-header ${isNavSolid ? "is-solid" : ""}`}>
@@ -564,7 +582,50 @@ export default function Home() {
                   </button>
                 </div>
               </div>
-
+              <form className="enquiry-form" onSubmit={submitEnquiry}>
+                <p className="contact-kicker">Send Enquiry</p>
+                <div className="enquiry-grid">
+                  <label className="enquiry-field">
+                    <span>Name</span>
+                    <input
+                      type="text"
+                      value={enquiryName}
+                      onChange={(event) => setEnquiryName(event.target.value)}
+                      placeholder="Your name"
+                      autoComplete="name"
+                    />
+                  </label>
+                  <label className="enquiry-field">
+                    <span>Email</span>
+                    <input
+                      type="email"
+                      value={enquiryEmail}
+                      onChange={(event) => setEnquiryEmail(event.target.value)}
+                      placeholder="you@example.com"
+                      autoComplete="email"
+                    />
+                  </label>
+                </div>
+                <label className="enquiry-field">
+                  <span>Message</span>
+                  <textarea
+                    value={enquiryMessage}
+                    onChange={(event) => setEnquiryMessage(event.target.value)}
+                    placeholder="Write your enquiry here..."
+                    rows={5}
+                  />
+                </label>
+                <div className="enquiry-actions">
+                  <button className="contact-btn primary" type="submit">
+                    Send Enquiry
+                  </button>
+                  {enquiryNotice && (
+                    <p className="enquiry-notice" role="status">
+                      {enquiryNotice}
+                    </p>
+                  )}
+                </div>
+              </form>
             </div>
 
             <p className="section-mark">THE HOME OF SPORTS</p>
