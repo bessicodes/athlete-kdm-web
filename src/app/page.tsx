@@ -565,63 +565,6 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="contact-social-wrap">
-                <p className="contact-kicker">Connect on Social</p>
-                <div className="social-grid">
-                  <a
-                    className="social-card"
-                    href="https://instagram.com/athletekingdm?igsh=MWFkY2RrajhqN2psMA==&utm_source=qr"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="social-icon" aria-hidden>
-                      <svg viewBox="0 0 24 24" fill="none">
-                        <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
-                        <circle cx="12" cy="12" r="4.2" />
-                        <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" />
-                      </svg>
-                    </span>
-                    <span className="social-copy">
-                      <small>Instagram</small>
-                      <strong>Follow Athlete Kingdom</strong>
-                    </span>
-                  </a>
-                  <a
-                    className="social-card"
-                    href="https://tiktok.com/@athletekingdm?_t=8kQJrUQWZmw&_r=1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="social-icon" aria-hidden>
-                      <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M14 5v8.1a3.1 3.1 0 1 1-2.2-2.9" />
-                        <path d="M14 5c.9 1.8 2.1 2.9 4 3.2" />
-                      </svg>
-                    </span>
-                    <span className="social-copy">
-                      <small>TikTok</small>
-                      <strong>Watch Fresh Edits</strong>
-                    </span>
-                  </a>
-                  <a
-                    className="social-card"
-                    href="https://www.youtube.com/@AthleteKingdom"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="social-icon" aria-hidden>
-                      <svg viewBox="0 0 24 24" fill="none">
-                        <rect x="2.5" y="6.5" width="19" height="11" rx="3.5" />
-                        <path d="M10 9.5 15.5 12 10 14.5z" fill="currentColor" />
-                      </svg>
-                    </span>
-                    <span className="social-copy">
-                      <small>YouTube</small>
-                      <strong>Subscribe for Weekly Drops</strong>
-                    </span>
-                  </a>
-                </div>
-              </div>
             </div>
 
             <p className="section-mark">THE HOME OF SPORTS</p>
