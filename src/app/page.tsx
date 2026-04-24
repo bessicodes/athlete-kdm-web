@@ -9,22 +9,107 @@ export default function Home() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [isNavSolid, setIsNavSolid] = useState(false);
+
+  const stats = [
+    { label: "Clips Edited", target: 420, suffix: "+" },
+    { label: "Community Reach", target: 1200, suffix: "K+" },
+    { label: "Sports Covered", target: 18, suffix: "+" },
+  ];
 
   useEffect(() => {
-    const elements = document.querySelectorAll("[data-reveal]");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { rootMargin: "0px 0px -12% 0px", threshold: 0.18 }
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const revealTargets = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        ".panel-section, .panel, .about-block, .about-legal, .about-video-wrap, .contact-intro, .contact-social-wrap, .social-card, .site-footer-inner"
+      )
+    );
+    revealTargets.forEach((element) => element.classList.add("reveal-up"));
+
+    const gridCards = Array.from(
+      document.querySelectorAll<HTMLElement>(".social-grid .social-card")
+    );
+    gridCards.forEach((card, index) =>
+      card.style.setProperty("--stagger-delay", `${index * 100}ms`)
     );
 
-    elements.forEach((element) => observer.observe(element));
+    let revealObserver: IntersectionObserver | null = null;
+    if (prefersReducedMotion) {
+      revealTargets.forEach((element) => element.classList.add("is-visible"));
+    } else {
+      revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver?.unobserve(entry.target);
+            }
+          });
+        },
+        { rootMargin: "0px 0px -10% 0px", threshold: 0.16 }
+      );
+
+      revealTargets.forEach((element) => revealObserver?.observe(element));
+    }
+
+    const countupElements = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-countup]")
+    );
+    const countupFrames = new Map<HTMLElement, number>();
+
+    const formatCountValue = (value: number, suffix: string) => {
+      if (suffix === "K+") return `${Math.round(value)}K+`;
+      return `${Math.round(value)}${suffix}`;
+    };
+
+    const runCountup = (element: HTMLElement) => {
+      const target = Number.parseFloat(element.dataset.countup ?? "0");
+      const suffix = element.dataset.suffix ?? "";
+      if (!Number.isFinite(target)) return;
+
+      if (prefersReducedMotion) {
+        element.textContent = formatCountValue(target, suffix);
+        return;
+      }
+
+      const duration = 1300;
+      const start = performance.now();
+      const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+
+      const tick = (now: number) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = easeOutCubic(progress);
+        element.textContent = formatCountValue(target * eased, suffix);
+        if (progress < 1) {
+          countupFrames.set(element, window.requestAnimationFrame(tick));
+        } else {
+          countupFrames.delete(element);
+        }
+      };
+
+      countupFrames.set(element, window.requestAnimationFrame(tick));
+    };
+
+    let countupObserver: IntersectionObserver | null = null;
+    if (prefersReducedMotion) {
+      countupElements.forEach((element) => runCountup(element));
+    } else {
+      countupObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              runCountup(entry.target as HTMLElement);
+              countupObserver?.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.45, rootMargin: "0px 0px -8% 0px" }
+      );
+      countupElements.forEach((element) => countupObserver?.observe(element));
+    }
 
     let targetX = window.innerWidth / 2;
     let targetY = window.innerHeight / 2;
@@ -39,13 +124,26 @@ export default function Home() {
     };
 
     const onScroll = () => {
+      setIsNavSolid(window.scrollY > 80);
+
       const scrollDelta = window.scrollY - lastScrollY;
-      targetY += scrollDelta * 0.22;
+      if (!prefersReducedMotion) {
+        targetY += scrollDelta * 0.22;
+      }
       lastScrollY = window.scrollY;
       updateScrollMotion();
     };
 
     const updateScrollMotion = () => {
+      if (prefersReducedMotion) {
+        document.documentElement.style.setProperty("--scroll-ratio", "0");
+        document.documentElement.style.setProperty("--hero-parallax-y", "0px");
+        document.documentElement.style.setProperty("--panel-parallax-y", "0px");
+        document.documentElement.style.setProperty("--bg-shift-x", "0px");
+        document.documentElement.style.setProperty("--bg-shift-y", "0px");
+        return;
+      }
+
       const maxScrollable = Math.max(
         document.documentElement.scrollHeight - window.innerHeight,
         1
@@ -84,9 +182,13 @@ export default function Home() {
       frame = window.requestAnimationFrame(animateCursor);
     };
 
-    window.addEventListener("mousemove", onMouseMove);
+    if (!prefersReducedMotion) {
+      window.addEventListener("mousemove", onMouseMove);
+    }
     window.addEventListener("scroll", onScroll, { passive: true });
-    frame = window.requestAnimationFrame(animateCursor);
+    if (!prefersReducedMotion) {
+      frame = window.requestAnimationFrame(animateCursor);
+    }
 
     const setHeaderOffset = () => {
       const header = document.querySelector(".site-header") as HTMLElement | null;
@@ -111,6 +213,11 @@ export default function Home() {
       const startY = window.scrollY;
       const diff = targetY - startY;
       const distance = Math.abs(diff);
+      if (prefersReducedMotion) {
+        window.scrollTo(0, targetY);
+        return;
+      }
+
       const duration = Math.min(1500, Math.max(760, distance * 0.9));
       const startTime = performance.now();
 
@@ -157,11 +264,19 @@ export default function Home() {
     anchors.forEach((anchor) => anchor.addEventListener("click", handleAnchorClick));
 
     return () => {
-      observer.disconnect();
+      revealObserver?.disconnect();
+      countupObserver?.disconnect();
       window.removeEventListener("resize", setHeaderOffset);
-      window.removeEventListener("mousemove", onMouseMove);
+      if (!prefersReducedMotion) {
+        window.removeEventListener("mousemove", onMouseMove);
+      }
       window.removeEventListener("scroll", onScroll);
-      window.cancelAnimationFrame(frame);
+      if (!prefersReducedMotion) {
+        window.cancelAnimationFrame(frame);
+      }
+      countupFrames.forEach((animationId) =>
+        window.cancelAnimationFrame(animationId)
+      );
       if (scrollFrame) {
         window.cancelAnimationFrame(scrollFrame);
       }
@@ -270,8 +385,8 @@ export default function Home() {
 
   return (
     <>
-      <header className="site-header">
-        <a href="#home" className="brand">
+      <header className={`site-header ${isNavSolid ? "is-solid" : ""}`}>
+        <a href="#home" className="brand intro-logo">
           <Image
             src="./images/kdm-logo-header.png"
             alt="Athlete Kingdom logo"
@@ -294,7 +409,7 @@ export default function Home() {
         <section id="home" className="hero">
           <div className="hero-content reveal is-visible">
             <p className="hero-kicker">
-              <span>THE HOME OF SPORTS</span>
+              <span className="intro-tagline">THE HOME OF SPORTS</span>
             </p>
             <h1>
               <span className="filled">ATHLETE</span>
@@ -335,6 +450,21 @@ export default function Home() {
                   </p>
                 </details>
 
+                <div className="stats-grid">
+                  {stats.map((stat) => (
+                    <article className="stat-card" key={stat.label}>
+                      <strong
+                        data-countup={stat.target}
+                        data-suffix={stat.suffix}
+                        aria-label={`${stat.label} ${stat.target}${stat.suffix}`}
+                      >
+                        0
+                        {stat.suffix}
+                      </strong>
+                      <span>{stat.label}</span>
+                    </article>
+                  ))}
+                </div>
               </div>
 
               <div className="about-media">
