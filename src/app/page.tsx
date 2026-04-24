@@ -472,8 +472,8 @@ export default function Home() {
                   <span className="about-badge">Identity</span>
                   <h3>Athlete Kingdom: The Home of Sports</h3>
                   <p>
-                    Join the community of sports lovers and athletes and connect
-                    with content designed to inspire progress.
+                    The community of sports lovers and athletes connects through
+                    content designed to inspire progress.
                   </p>
                 </article>
 
