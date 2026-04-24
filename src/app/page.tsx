@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
+  const contactEmail = "ruanbester6@icloud.com";
   const aboutVideoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
@@ -333,7 +334,7 @@ export default function Home() {
 
   const copyEmail = async () => {
     try {
-      await navigator.clipboard.writeText("athletekingdomedits@gmail.com");
+      await navigator.clipboard.writeText(contactEmail);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1400);
     } catch {
@@ -356,7 +357,7 @@ export default function Home() {
     const body = [`Name: ${name}`, `Email: ${email}`, "", "Message:", message].join(
       "\n"
     );
-    window.location.href = `mailto:athletekingdomedits@gmail.com?subject=${encodeURIComponent(
+    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
     setEnquiryNotice("Opening your email app to send this enquiry.");
@@ -561,8 +562,8 @@ export default function Home() {
                   fans who want to grow with a passionate community. For
                   collaborations, questions, copyright support, or partnership
                   ideas, reach out via{" "}
-                  <a href="mailto:athletekingdomedits@gmail.com">
-                    athletekingdomedits@gmail.com
+                  <a href={`mailto:${contactEmail}`}>
+                    {contactEmail}
                   </a>
                   . You&apos;re always welcome here.
                 </p>
@@ -573,7 +574,7 @@ export default function Home() {
                 <div className="contact-actions">
                   <a
                     className="contact-btn primary"
-                    href="mailto:athletekingdomedits@gmail.com"
+                    href={`mailto:${contactEmail}`}
                   >
                     Start a Conversation
                   </a>
@@ -642,8 +643,8 @@ export default function Home() {
             (Copyright Act Section 107) for commentary, education, and creative
             editing.
           </p>
-          <a className="footer-email" href="mailto:athletekingdomedits@gmail.com">
-            athletekingdomedits@gmail.com
+          <a className="footer-email" href={`mailto:${contactEmail}`}>
+            {contactEmail}
           </a>
         </div>
       </footer>
