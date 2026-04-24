@@ -306,6 +306,19 @@ h1 {
   padding-top: 0.55rem;
 }
 
+.scroll-indicator::after {
+  content: "Scroll to Explore";
+  position: absolute;
+  top: calc(100% + 0.55rem);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.7);
+}
+
 .scroll-indicator span {
   width: 6px;
   height: 6px;
