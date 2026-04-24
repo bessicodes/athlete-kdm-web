@@ -521,10 +521,6 @@ export default function Home() {
             <div className="contact-live">
               <div className="contact-intro">
                 <p className="contact-eyebrow">Join the Kingdom Community</p>
-                <h3 className="contact-title">
-                  Let&apos;s connect, collaborate, and build the home of sports
-                  together.
-                </h3>
                 <p>
                   Athlete Kingdom welcomes athletes, creators, brands, and sports
                   fans who want to grow with a passionate community. For

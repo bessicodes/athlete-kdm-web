@@ -628,14 +628,6 @@ h2 {
   margin-bottom: 0.56rem;
 }
 
-.contact-title {
-  font-size: clamp(1.25rem, 2.2vw, 1.92rem);
-  line-height: 1.24;
-  letter-spacing: 0.01em;
-  font-weight: 800;
-  margin-bottom: 0.7rem;
-}
-
 .contact-live p {
   color: rgba(255, 255, 255, 0.88);
   line-height: 1.7;
@@ -1270,10 +1262,6 @@ h2 {
   .contact-kicker {
     margin-bottom: 0.65rem;
     letter-spacing: 0.12em;
-  }
-
-  .contact-title {
-    font-size: clamp(1.18rem, 6.4vw, 1.5rem);
   }
 
   .contact-quote {
