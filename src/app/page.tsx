@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
-  const contactEmail = "ruanbester6@icloud.com";
+  const contactEmail = "athletekingdomedits@gmail.com";
   const aboutVideoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
